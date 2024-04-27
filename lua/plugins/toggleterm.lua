@@ -29,6 +29,6 @@ return {
 			lazygit:toggle()
 		end
 
-		vim.api.nvim_set_keymap("n", "<leader>se", "<cmd>lua _Lazygit_toggle()<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _Lazygit_toggle()<CR>", { noremap = true, silent = true })
 	end,
 }
