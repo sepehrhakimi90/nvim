@@ -6,6 +6,9 @@ vim.cmd("set number")
 vim.cmd("set relativenumber")
 vim.g.mapleader = " "
 
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
+
 vim.keymap.set("n", "<C-t>n", ":tabnew<cr>", {})
 vim.keymap.set("n", "<C-t>c", ":tabc<cr>", {})
 vim.keymap.set("n", "<C-t>l", "gt", {})
