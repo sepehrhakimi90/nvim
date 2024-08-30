@@ -1,5 +1,5 @@
 return {
-  "simrat39/rust-tools.nvim",
+	--[["simrat39/rust-tools.nvim"],
   ft = "rust",
   dependencies = "neovim/nvim-lspconfig",
   config = function()
@@ -14,5 +14,5 @@ return {
         end,
       },
     })
-  end,
+  end,--]]
 }
