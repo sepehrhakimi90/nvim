@@ -132,59 +132,59 @@ return {
 				})
 			end,
 			["rust_analyzer"] = function()
-				lspconfig["rust_analyzer"].setup({
-					capabilities = capabilities,
-					settings = {
-						["rust_analyzer"] = {
-							assist = {
-								importGranularity = "module",
-								importPrefix = "by_self",
-							},
-							cargo = {
-								loadOutDirsFromCheck = true,
-							},
-							procMacro = {
-								enable = true,
-							},
-							inlayHints = {
-								bindingModeHints = {
-									enable = false,
-								},
-								chainingHints = {
-									enable = true,
-								},
-								closingBraceHints = {
-									enable = true,
-									minLines = 25,
-								},
-								closureReturnTypeHints = {
-									enable = "never",
-								},
-								lifetimeElisionHints = {
-									enable = "never",
-									useParameterNames = false,
-								},
-								maxLength = 25,
-								parameterHints = {
-									enable = true,
-								},
-								reborrowHints = {
-									enable = "never",
-								},
-								renderColons = true,
-								typeHints = {
-									enable = true,
-									hideClosureInitialization = false,
-									hideNamedConstructor = false,
-								},
-							},
-						},
-					},
-					on_attach = function(client, bufnr)
-						-- Enable inlay hints
-						require("lsp-inlayhints").on_attach(client, bufnr)
-					end,
-				})
+				-- lspconfig["rust_analyzer"].setup({
+				-- 	capabilities = capabilities,
+				-- 	settings = {
+				-- 		["rust_analyzer"] = {
+				-- 			assist = {
+				-- 				importGranularity = "module",
+				-- 				importPrefix = "by_self",
+				-- 			},
+				-- 			cargo = {
+				-- 				loadOutDirsFromCheck = true,
+				-- 			},
+				-- 			procMacro = {
+				-- 				enable = true,
+				-- 			},
+				-- 			inlayHints = {
+				-- 				bindingModeHints = {
+				-- 					enable = false,
+				-- 				},
+				-- 				chainingHints = {
+				-- 					enable = true,
+				-- 				},
+				-- 				closingBraceHints = {
+				-- 					enable = true,
+				-- 					minLines = 25,
+				-- 				},
+				-- 				closureReturnTypeHints = {
+				-- 					enable = "never",
+				-- 				},
+				-- 				lifetimeElisionHints = {
+				-- 					enable = "never",
+				-- 					useParameterNames = false,
+				-- 				},
+				-- 				maxLength = 25,
+				-- 				parameterHints = {
+				-- 					enable = true,
+				-- 				},
+				-- 				reborrowHints = {
+				-- 					enable = "never",
+				-- 				},
+				-- 				renderColons = true,
+				-- 				typeHints = {
+				-- 					enable = true,
+				-- 					hideClosureInitialization = false,
+				-- 					hideNamedConstructor = false,
+				-- 				},
+				-- 			},
+				-- 		},
+				-- 	},
+				-- 	on_attach = function(client, bufnr)
+				-- 		-- Enable inlay hints
+				-- 		require("lsp-inlayhints").on_attach(client, bufnr)
+				-- 	end,
+				-- })
 			end,
 		})
 	end,
