@@ -11,7 +11,12 @@ return {
       server = {
         on_attach = function(client, bufnr)
           -- you can also put keymaps in here
-          require("lsp-inlayhints").on_attach(client, bufnr)
+          -- require("lsp-inlayhints").on_attach(client, bufnr)
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
+          -- Toggle LSP inlay hints with <leader>ih
+          vim.keymap.set('n', '<leader>ih', function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          end, { noremap = true, silent = true })
         end,
         default_settings = {
           -- rust-analyzer language server configuration
@@ -38,6 +43,8 @@ return {
                 hideClosureInitialization = false,
                 hideNamedConstructor = false,
               },
+              chainingHints = { enable = true },
+              closingBraceHints = { enable = true },
             },
           },
         },
