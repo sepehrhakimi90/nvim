@@ -75,10 +75,3 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
-
-
--- Tree-sitter folding settings
-vim.opt.foldmethod = "expr"                     -- Set fold method to 'expr'
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- Use Tree-sitter for fold expressions
-vim.opt.foldenable = false                      -- Start with all folds open by default
-vim.opt.foldlevel = 99                          -- Set high fold level to avoid auto-folding
