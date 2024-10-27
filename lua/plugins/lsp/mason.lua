@@ -1,38 +1,53 @@
 return {
-	"williamboman/mason.nvim",
-	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
-	},
-	config = function()
-		-- import mason
-		local mason = require("mason")
+  "williamboman/mason.nvim",
+  dependencies = {
+    "williamboman/mason-lspconfig.nvim",
+    "jay-babu/mason-null-ls.nvim",
+  },
+  config = function()
+    -- import mason
+    local mason = require("mason")
 
-		-- import mason-lspconfig
-		local mason_lspconfig = require("mason-lspconfig")
+    -- import mason-lspconfig
+    local mason_lspconfig = require("mason-lspconfig")
 
-		-- enable mason and configure icons
-		mason.setup({
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
-				},
-			},
-		})
+    local mason_nullls = require("mason-null-ls")
 
-		mason_lspconfig.setup({
-			-- list of servers for mason to install
-			ensure_installed = {
-				"html",
-				"cssls",
-				"tailwindcss",
-				"lua_ls",
-				"gopls",
-				"bashls",
-				"clangd",
-				"rust_analyzer",
-			},
-		})
-	end,
+    -- enable mason and configure icons
+    mason.setup({
+      ui = {
+        icons = {
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗",
+        },
+      },
+    })
+
+    mason_lspconfig.setup({
+      -- list of servers for mason to install
+      ensure_installed = {
+        "html",
+        "cssls",
+        "tailwindcss",
+        "lua_ls",
+        "gopls",
+        "bashls",
+        "clangd",
+        "rust_analyzer",
+      },
+    })
+
+
+    mason_nullls.setup({
+      ensure_installed = {
+        "stylua",
+        "gofumpt",
+        "goimports_reviser",
+        "golines",
+        "dxfmt",
+        "leptosfmt",
+      },
+    })
+  end,
 }
