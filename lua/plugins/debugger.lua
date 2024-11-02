@@ -5,9 +5,15 @@ return {
       "rcarriga/nvim-dap-ui",
       "leoluz/nvim-dap-go",
       "nvim-neotest/nvim-nio",
+      "mxsdev/nvim-dap-vscode-js",
     },
     config = function()
       local dap, dapui = require("dap"), require("dapui")
+      local dap_vscode = require("dap.ext.vscode")
+
+      dap.set_log_level("DEBUG")
+
+      dap_vscode.load_launchjs(nil, { go = { "go" } })
 
       require("dapui").setup()
       require("dap-go").setup()
