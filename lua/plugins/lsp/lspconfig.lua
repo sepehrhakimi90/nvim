@@ -18,6 +18,14 @@ return {
 
     local keymap = vim.keymap -- for conciseness
 
+    local on_attach = function()
+      -- if client.server_capabilities.inlayHintProvider then
+      keymap.set("n", "<leader>ih", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      end, { noremap = true, silent = true })
+      -- end
+    end
+
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
@@ -105,6 +113,7 @@ return {
       ["gopls"] = function()
         lspconfig["gopls"].setup({
           capabilities = capabilities,
+          on_attach = on_attach,
           cmd = { "gopls" },
           filetypes = { "go", "gomod", "gowork", "gotmpl" },
           settings = {
@@ -113,6 +122,15 @@ return {
               usePlaceholders = true,
               analyses = {
                 unusedparams = true,
+              },
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
               },
             },
           },
@@ -135,6 +153,7 @@ return {
       ["clangd"] = function()
         lspconfig["clangd"].setup({
           capabilities = capabilities,
+          on_attach = on_attach,
           filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "hpp" },
         })
       end,
